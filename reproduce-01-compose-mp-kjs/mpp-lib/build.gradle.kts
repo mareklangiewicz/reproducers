@@ -1,3 +1,5 @@
+import org.jetbrains.compose.*
+
 plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose") version "1.2.0-beta03-dev803"
@@ -17,7 +19,9 @@ kotlin {
     }
     sourceSets {
         val commonMain by getting {
+            @OptIn(ExperimentalComposeLibrary::class)
             dependencies {
+                implementation(compose.material3)
                 implementation(compose.runtime)
                 implementation(compose.ui)
             }
