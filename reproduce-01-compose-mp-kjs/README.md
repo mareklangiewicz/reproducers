@@ -1,0 +1,70 @@
+Example project to reproduce compilation error with Kotlin 1.7.20 + Compose Multiplatform
+----
+
+In current state it reproduces a bit different error that my oryginal project :-(
+(but maybe root cause is the same)
+
+So the error I was trying to reproduce was:
+`e: java.lang.AssertionError: org.jetbrains.kotlin.ir.expressions.impl.IrCallImpl@7b44506d: No such value argument slot: 0`
+(when compiling JS (jsMainClasses task))
+
+In current state this example reproduces error below (jsMainClasses task):
+```
+java.lang.IllegalStateException: IdSignature clash: kotlin/Suppress.<init>|-6780234697714860085[0]; Existed declaration CONSTRUCTOR IR_EXTERNAL_DECLARATION_STUB visibility:public <> (names:kotlin.Array<out kotlin.String>) returnType:kotlin.Suppress [primary] clashed with new CONSTRUCTOR IR_EXTERNAL_DECLARATION_STUB visibility:public <> (names:kotlin.Array<out kotlin.String>) returnType:kotlin.Suppress [primary]
+	at org.jetbrains.kotlin.ir.backend.js.lower.serialization.ir.JsUniqIdClashTracker.commit(JsDeclarationTable.kt:27)
+	at org.jetbrains.kotlin.backend.common.serialization.GlobalDeclarationTable.computeSignatureByDeclaration(DeclarationTable.kt:48)
+	at org.jetbrains.kotlin.backend.common.serialization.DeclarationTable.computeSignatureByDeclaration(DeclarationTable.kt:83)
+	at org.jetbrains.kotlin.backend.common.serialization.DeclarationTable.signatureByDeclaration(DeclarationTable.kt:92)
+	at org.jetbrains.kotlin.backend.common.serialization.IrFileSerializer.protoIdSignature(IrFileSerializer.kt:290)
+	at org.jetbrains.kotlin.backend.common.serialization.IrFileSerializer.serializeIrSymbol(IrFileSerializer.kt:353)
+	at org.jetbrains.kotlin.backend.common.serialization.IrFileSerializer.serializeConstructorCall(IrFileSerializer.kt:602)
+	at org.jetbrains.kotlin.backend.common.serialization.IrFileSerializer.serializeAnnotations(IrFileSerializer.kt:363)
+	at org.jetbrains.kotlin.backend.common.serialization.IrFileSerializer.serializeIrFileImpl(IrFileSerializer.kt:1422)
+	at org.jetbrains.kotlin.backend.common.serialization.IrFileSerializer.access$serializeIrFileImpl(IrFileSerializer.kt:115)
+	at org.jetbrains.kotlin.backend.common.serialization.IrFileSerializer$serializeIrFile$1.invoke(IrFileSerializer.kt:1410)
+	at org.jetbrains.kotlin.backend.common.serialization.IrFileSerializer$serializeIrFile$1.invoke(IrFileSerializer.kt:1409)
+	at org.jetbrains.kotlin.backend.common.serialization.signature.PublicIdSignatureComputer.inFile(IdSignatureSerializer.kt:45)
+	at org.jetbrains.kotlin.backend.common.serialization.signature.IdSignatureSerializer.inFile(IdSignatureSerializer.kt:229)
+	at org.jetbrains.kotlin.backend.common.serialization.DeclarationTable.inFile(DeclarationTable.kt:62)
+	at org.jetbrains.kotlin.backend.common.serialization.IrFileSerializer.serializeIrFile(IrFileSerializer.kt:1409)
+	at org.jetbrains.kotlin.backend.common.serialization.IrModuleSerializer.serializeIrFile(IrModuleSerializer.kt:28)
+	at org.jetbrains.kotlin.backend.common.serialization.IrModuleSerializer.serializedIrModule(IrModuleSerializer.kt:35)
+	at org.jetbrains.kotlin.ir.backend.js.KlibKt.serializeModuleIntoKlib(klib.kt:754)
+	at org.jetbrains.kotlin.ir.backend.js.KlibKt.generateKLib(klib.kt:240)
+	at org.jetbrains.kotlin.ir.backend.js.KlibKt.generateKLib$default(klib.kt:208)
+	at org.jetbrains.kotlin.cli.js.K2JsIrCompiler.doExecute(K2JsIrCompiler.kt:281)
+	at org.jetbrains.kotlin.cli.js.K2JSCompiler.doExecute(K2JSCompiler.java:183)
+	at org.jetbrains.kotlin.cli.js.K2JSCompiler.doExecute(K2JSCompiler.java:72)
+	at org.jetbrains.kotlin.cli.common.CLICompiler.execImpl(CLICompiler.kt:99)
+	at org.jetbrains.kotlin.cli.common.CLICompiler.execImpl(CLICompiler.kt:47)
+	at org.jetbrains.kotlin.cli.common.CLITool.exec(CLITool.kt:101)
+	at org.jetbrains.kotlin.incremental.IncrementalJsCompilerRunner.runCompiler(IncrementalJsCompilerRunner.kt:208)
+	at org.jetbrains.kotlin.incremental.IncrementalJsCompilerRunner.runCompiler(IncrementalJsCompilerRunner.kt:84)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.compileIncrementally(IncrementalCompilerRunner.kt:373)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.compileIncrementally$default(IncrementalCompilerRunner.kt:318)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.rebuild(IncrementalCompilerRunner.kt:114)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.compileImpl(IncrementalCompilerRunner.kt:207)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.compile(IncrementalCompilerRunner.kt:79)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.compile$default(IncrementalCompilerRunner.kt:69)
+	at org.jetbrains.kotlin.daemon.CompileServiceImplBase.execJsIncrementalCompiler(CompileServiceImpl.kt:566)
+	at org.jetbrains.kotlin.daemon.CompileServiceImplBase.access$execJsIncrementalCompiler(CompileServiceImpl.kt:101)
+	at org.jetbrains.kotlin.daemon.CompileServiceImpl.compile(CompileServiceImpl.kt:1837)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:360)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:587)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:828)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:705)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:704)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+
+```
