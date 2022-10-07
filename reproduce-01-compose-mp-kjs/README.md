@@ -68,3 +68,6 @@ java.lang.IllegalStateException: IdSignature clash: kotlin/Suppress.<init>|-6780
 	at java.base/java.lang.Thread.run(Thread.java:833)
 
 ```
+
+Also changing compose compiler from 1.3.2 -> 1.4.0-dev-k1.7.20-e49b3b6028b
+does NOT change the kind of error reported (still IdSignature clash.....)

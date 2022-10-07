@@ -7,6 +7,7 @@ repositories {
     google()
     mavenCentral()
     maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+    //maven("https://androidx.dev/storage/compose-compiler/repository/")
 }
 
 kotlin {
@@ -33,6 +34,7 @@ configurations.all {
     resolutionStrategy.dependencySubstitution {
         substitute(module("org.jetbrains.compose.compiler:compiler")).apply {
             using(module("androidx.compose.compiler:compiler:1.3.2"))
+            // using(module("androidx.compose.compiler:compiler:1.4.0-dev-k1.7.20-e49b3b6028b"))
         }
     }
 }
