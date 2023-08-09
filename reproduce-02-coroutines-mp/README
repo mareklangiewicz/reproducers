@@ -1,0 +1,52 @@
+marek@marek-XPS-13-9370:~/code/kotlin/reproducers/reproduce-02-coroutines-mp$ ./gradlew clean
+
+BUILD SUCCESSFUL in 666ms
+4 actionable tasks: 4 up-to-date
+marek@marek-XPS-13-9370:~/code/kotlin/reproducers/reproduce-02-coroutines-mp$ ./gradlew assemble
+
+> Task :smokeTest:compileCommonMainKotlinMetadata FAILED
+e: file:///home/marek/code/kotlin/reproducers/reproduce-02-coroutines-mp/smokeTest/src/commonMain/kotlin/Sample.kt:1:8 Unresolved reference: kotlinx
+e: file:///home/marek/code/kotlin/reproducers/reproduce-02-coroutines-mp/smokeTest/src/commonMain/kotlin/Sample.kt:3:25 Unresolved reference: coroutineScope
+e: file:///home/marek/code/kotlin/reproducers/reproduce-02-coroutines-mp/smokeTest/src/commonMain/kotlin/Sample.kt:4:5 Unresolved reference: launch
+e: file:///home/marek/code/kotlin/reproducers/reproduce-02-coroutines-mp/smokeTest/src/commonMain/kotlin/Sample.kt:5:9 Unresolved reference: delay
+
+> Task :smokeTest:compileKotlinJs FAILED
+e: file:///home/marek/code/kotlin/reproducers/reproduce-02-coroutines-mp/smokeTest/src/commonMain/kotlin/Sample.kt:1:16 Unresolved reference: coroutines
+e: file:///home/marek/code/kotlin/reproducers/reproduce-02-coroutines-mp/smokeTest/src/commonMain/kotlin/Sample.kt:3:25 Unresolved reference: coroutineScope
+e: file:///home/marek/code/kotlin/reproducers/reproduce-02-coroutines-mp/smokeTest/src/commonMain/kotlin/Sample.kt:4:5 Unresolved reference: launch
+e: file:///home/marek/code/kotlin/reproducers/reproduce-02-coroutines-mp/smokeTest/src/commonMain/kotlin/Sample.kt:5:9 Unresolved reference: delay
+
+FAILURE: Build completed with 2 failures.
+
+1: Task failed with an exception.
+-----------
+* What went wrong:
+Execution failed for task ':smokeTest:compileCommonMainKotlinMetadata'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+==============================================================================
+
+2: Task failed with an exception.
+-----------
+* What went wrong:
+Execution failed for task ':smokeTest:compileKotlinJs'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+==============================================================================
+
+BUILD FAILED in 961ms
+6 actionable tasks: 6 executed
+marek@marek-XPS-13-9370:~/code/kotlin/reproducers/reproduce-02-coroutines-mp$ 
+
