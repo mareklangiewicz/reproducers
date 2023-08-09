@@ -1,3 +1,8 @@
+Issue with kotlinx-coroutines 1.7.3
+(works correctly with 1.7.2)
+
+
+
 marek@marek-XPS-13-9370:~/code/kotlin/reproducers/reproduce-02-coroutines-mp$ ./gradlew clean
 
 BUILD SUCCESSFUL in 666ms
