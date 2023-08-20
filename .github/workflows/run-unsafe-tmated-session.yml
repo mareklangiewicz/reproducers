@@ -2,10 +2,11 @@ name: run-unsafe-tmated-session
 on:
   workflow_dispatch: {}
 jobs:
-  build:
+  job-unsafe-tmated-session:
+    if: github.repository_owner == github.actor
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - run: sleep 15
         name: Sleep 15
-      - uses: actions/checkout@v3
       - uses: mxschmitt/action-tmate@v3
