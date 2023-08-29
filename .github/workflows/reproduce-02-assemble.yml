@@ -1,0 +1,30 @@
+# This file was generated using a Kotlin DSL.
+# If you want to modify the workflow, please change the Kotlin source and regenerate this YAML file.
+# Generated with https://github.com/typesafegithub/github-workflows-kt
+
+name: 'reproduce-02-assemble'
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+    - 'master'
+    - 'main'
+  pull_request: {}
+jobs:
+  build-for-UbuntuLatest:
+    runs-on: 'ubuntu-latest'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v3'
+    - id: 'step-1'
+      name: 'Set up JDK'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '17'
+        distribution: 'zulu'
+    - id: 'step-2'
+      name: 'Build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'assemble'
+        build-root-directory: 'reproduce-02-coroutines-mp'
