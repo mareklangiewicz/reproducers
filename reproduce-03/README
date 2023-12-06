@@ -1,0 +1,15 @@
+Issue with value classes and inline functions in Kotlin/JS 2.0.0-Beta1
+(works correctly with 1.9.21)
+
+./gradlew jsBrowserDevelopmentRun
+
+see console in browser,
+
+the line that is incorrect is:
+"prefix2-MyWrapper2(inner=null)"
+
+it should be:
+"prefix2-"
+
+whole code is in Main.js.kt file.
+see there for details in comments

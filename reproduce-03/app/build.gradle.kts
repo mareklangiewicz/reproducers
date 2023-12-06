@@ -6,12 +6,10 @@
  */
 
 plugins {
-    // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
     alias(libs.plugins.mpp)
 }
 
 repositories {
-    // Use Maven Central for resolving dependencies.
     mavenCentral()
 }
 
@@ -24,3 +22,4 @@ kotlin {
         val jsMain by getting
     }
 }
+
