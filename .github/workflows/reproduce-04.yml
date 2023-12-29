@@ -1,4 +1,4 @@
-name: 'reproduce-02-assemble'
+name: 'reproduce-04'
 on:
   workflow_dispatch: {}
 jobs:
@@ -11,11 +11,11 @@ jobs:
       name: 'Set up JDK'
       uses: 'actions/setup-java@v3'
       with:
-        java-version: '17'
+        java-version: '21'
         distribution: 'zulu'
     - id: 'step-2'
       name: 'Build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: 'assemble'
-        build-root-directory: 'reproduce-02-coroutines-mp'
+        arguments: 'compileDebug'
+        build-root-directory: 'reproduce-04-mpp-compile'
