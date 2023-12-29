@@ -17,5 +17,5 @@ jobs:
       name: 'Build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: 'compileDebug'
+        arguments: 'compileDebugSources'
         build-root-directory: 'reproduce-04-mpp-compile'
