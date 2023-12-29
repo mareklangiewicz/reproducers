@@ -23,8 +23,7 @@ kotlin {
 }
 
 compose {
-    kotlinCompilerPlugin.set("org.jetbrains.compose.compiler:compiler:1.5.6-dev1-kt2.0.0-Beta2")
-    // kotlinCompilerPlugin.set(libs.composecompiler.get())
+    kotlinCompilerPlugin.set(libs.composecompiler.get().toString())
 }
 
 android {

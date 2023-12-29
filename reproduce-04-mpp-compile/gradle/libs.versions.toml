@@ -3,16 +3,23 @@
 
 [versions]
 #junit-jupiter-engine = "5.10.0"
+
+#kotlin = "1.9.21"
+#kotlin = "1.9.22"
+#kotlin = "2.0.0-Beta1"
+kotlin = "2.0.0-Beta2"
+
 compose = "1.6.0-dev1350"
+
 compose-compiler = "1.5.6-dev1-kt2.0.0-Beta2"
+#compose-compiler = "1.5.7"
+
 
 [libraries]
 composecompiler = { module = "org.jetbrains.compose.compiler:compiler", version.ref = "compose-compiler" }
 #junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-jupiter-engine" }
 
 [plugins]
-mpp = { id = "org.jetbrains.kotlin.multiplatform", version = "2.0.0-Beta2" }
-#mpp = { id = "org.jetbrains.kotlin.multiplatform", version = "2.0.0-Beta1" }
-#mpp = { id = "org.jetbrains.kotlin.multiplatform", version = "1.9.21" }
+mpp = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 androlib = { id = "com.android.library", version = "8.2.0" }
