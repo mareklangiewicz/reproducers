@@ -9,7 +9,8 @@
 #kotlin = "2.0.0-Beta1"
 kotlin = "2.0.0-Beta2"
 
-compose = "1.6.0-dev1350"
+#compose = "1.6.0-dev1350"
+compose = "1.6.0-dev1357" #still reproducible with this compose ver
 
 compose-compiler = "1.5.6-dev1-kt2.0.0-Beta2"
 #compose-compiler = "1.5.7"
