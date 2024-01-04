@@ -1,3 +1,6 @@
+UPDATE: Fixed in kotlin mpp Beta2
+
+
 Issue with value classes and inline functions in Kotlin/JS 2.0.0-Beta1
 (works correctly with 1.9.21)
 
