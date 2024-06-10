@@ -1,6 +1,9 @@
 Looks like k2 js compilation have bug reproducable when composable fun have vararg of pair with generic type.
 See reproduce-05-k2js-vararg/app/src/jsMain/kotlin/Main.js.kt:5
 
+It's reproducible on github too:
+https://github.com/mareklangiewicz/reproducers/actions/runs/9445653007
+
 
 11:05:09  main (d2f1d91) [✘]  v8.8 󰍛 9GiB/15GiB
 …/reproducers/reproduce-05-k2js-vararg ➜ grclean
