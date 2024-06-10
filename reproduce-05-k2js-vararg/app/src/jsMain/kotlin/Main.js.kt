@@ -7,13 +7,6 @@ import androidx.compose.runtime.*
 
 
 @Composable fun <T> MySwitch(state: MutableState<T>, vararg options: Pair<String, T>) {
-    // for ((label, value) in options) UText(
-    //   text = label,
-    //   mod = Mod.onUClick { state.value = value },
-    //   center = true,
-    //   bold = state.value == value,
-    //   mono = true,
-    // )
 }
 
 fun main() {
