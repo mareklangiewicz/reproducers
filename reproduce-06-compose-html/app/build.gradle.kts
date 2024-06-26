@@ -30,5 +30,11 @@ kotlin {
                 implementation(compose.html.core)
             }
         }
+        val jsTest by getting {
+            dependencies {
+                implementation(kotlin("test"))
+                implementation(compose.html.testUtils)
+            }
+        }
     }
 }
