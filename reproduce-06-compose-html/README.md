@@ -1,5 +1,7 @@
-Example project to reproduce runtime error in browser with Kotlin 2.0.20-Beta1 + Compose Multiplatform 1.7.0-dev1698
+Example project to reproduce runtime error in browser with Kotlin 2.0.20-Beta1 + Compose Multiplatform 1.7.0-alpha01, also 1.7.0-dev1698
 ----
+
+BTW: It works correctly with 1.7.0-dev1686
 
 
 Command `./gradlew jsBrowserRun` reproduces error in browser console:
@@ -20,4 +22,3 @@ compose-multiplatform-core-compose-runtime-runtime.js:12591 Uncaught TypeError: 
     at eval (html-internal-html-core-runtime.js:407:25)
 ```
 
-BTW: It works correctly with 1.7.0-dev1686
