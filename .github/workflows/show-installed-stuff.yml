@@ -1,0 +1,14 @@
+name: show-intalled-stuff
+on:
+  workflow_dispatch: {}
+jobs:
+  show-intalled-stuff:
+    if: github.repository_owner == github.actor
+    runs-on: ubuntu-latest
+    steps:
+      - run: compgen -c
+      - run: compgen -b
+      - run: ex --version
+      - run: vim --version
+      - run: nvim -V1 -v
+      - run: dpkg -l
