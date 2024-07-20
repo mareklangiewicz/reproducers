@@ -8,7 +8,11 @@ jobs:
     steps:
       - run: compgen -c
       - run: compgen -b
+      - run: dpkg -l
+      - run: snap list
       - run: ex --version
       - run: vim --version
+      - uses: rhysd/action-setup-vim@v1
+        with:
+          neovim: true
       - run: nvim -V1 -v
-      - run: dpkg -l
