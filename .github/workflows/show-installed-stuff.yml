@@ -1,8 +1,8 @@
-name: show-intalled-stuff
+name: show-installed-stuff
 on:
   workflow_dispatch: {}
 jobs:
-  show-intalled-stuff:
+  show-installed-stuff:
     if: github.repository_owner == github.actor
     runs-on: ubuntu-latest
     steps:
