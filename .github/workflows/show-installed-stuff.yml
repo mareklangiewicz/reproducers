@@ -8,7 +8,9 @@ jobs:
     steps:
       - run: compgen -c
       - run: compgen -b
+      - run: apropos -s 1 ''
       - run: dpkg -l
+      - run: apt list
       - run: snap list
       - run: ex --version
       - run: vim --version
@@ -16,3 +18,4 @@ jobs:
         with:
           neovim: true
       - run: nvim -V1 -v
+      
