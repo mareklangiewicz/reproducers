@@ -1,0 +1,21 @@
+name: 'reproduce-06'
+on:
+  workflow_dispatch: {}
+jobs:
+  build-for-UbuntuLatest:
+    runs-on: 'ubuntu-latest'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v3'
+    - id: 'step-1'
+      name: 'Set up JDK'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '21'
+        distribution: 'zulu'
+    - id: 'step-2'
+      name: 'Build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: ':app:compileProductionExecutableKotlinJs'
+        build-root-directory: 'reproduce-07-k2js-ulong-constructor'

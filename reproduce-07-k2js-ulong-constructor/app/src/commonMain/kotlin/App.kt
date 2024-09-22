@@ -1,8 +1,8 @@
 package pl.mareklangiewicz.reproduce07.app
 
-import androidx.compose.ui.graphics.Color.Companion.Black
+import androidx.compose.ui.graphics.Color
 
 fun main() {
     "bla" is ULong
-    Black.copy()
+    Color.Black.copy()
 }
